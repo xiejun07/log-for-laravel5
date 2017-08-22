@@ -61,10 +61,7 @@ class LaravelLogViewer
      */
     public static function logpath()
     {
-//        $logsPath = storage_path('logs');
-//        return $logsPath;
-        return $logsPath = config('logforlaravel.log_path');
-//        return '/var/log/laravel/cms';
+        return $logsPath = config('logforlaravel.log_path') ?: storage_path('logs');
     }
 
     /**
@@ -182,7 +179,6 @@ class LaravelLogViewer
     public static function getFiles($basename = false)
     {
         $files = array();
-//        $path = storage_path(). '/logs';
         $path = self::logpath();
         $files = LaravelLogViewer::getFileArray($path);//dd($files);
 //        $files = glob(storage_path() . '/logs/*.log');
